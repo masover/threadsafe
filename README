@@ -1,0 +1,9 @@
+Right now, all this does is add a method called threadsafe? to Object, which returns false.
+
+The idea is that if you know an object is threadsafe, you can just use it, without worrying about synchronization. If the object is not threadsafe, you know you have to synchronize access. This provides a means of doing that programmatically.
+
+In this case, "threadsafe" is defined as "every method call is atomic", meaning it either handles synchronization itself, or synchronization isn't needed. It is allowed for an object to change from non-threadsafe to threadsafe, but not vice versa.
+
+This is something I wanted for an actor library I'm developing. The idea is that unsafe objects can be automatically wrapped in actors, but it would be nice to avoid wrapping known-safe objects in actors.
+
+However, I have no idea what's safe, so contributions welcome!
